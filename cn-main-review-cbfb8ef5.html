@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sofascore · 体育数据站点介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f8f5f0;   /* 米白基调 */
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+      color: #2c3e2d;
+      line-height: 1.7;
+      padding: 2.4rem 1.2rem;
+    }
+
+    .page-wrap {
+      max-width: 880px;
+      margin: 0 auto;
+      background: rgba(255, 253, 248, 0.85);
+      border-radius: 32px;
+      padding: 2rem 2.4rem 3.2rem;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.03), 0 1px 4px rgba(0,0,0,0.04);
+      backdrop-filter: blur(2px);
+    }
+
+    /* 主视觉 —— 温和分割 */
+    .hero {
+      margin-bottom: 2.6rem;
+      border-bottom: 1px solid #e5ded3;
+      padding-bottom: 1.8rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #1f2b1f;
+      margin-bottom: 0.35rem;
+    }
+
+    .hero .sub {
+      font-size: 1.05rem;
+      color: #5f6b5a;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .hero .sub span {
+      background: #eae5db;
+      padding: 0.1rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: #3a4a3a;
+    }
+
+    /* 卡片网格 —— 信息卡片式 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2.2rem 0 2.6rem;
+    }
+
+    .card {
+      background: #fffffffa;
+      border-radius: 24px;
+      padding: 1.5rem 1.6rem 1.6rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.02);
+      transition: box-shadow 0.2s;
+      border: 1px solid #ede8df;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 20px rgba(56, 67, 48, 0.04);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #273b2a;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .card h3 i {
+      font-style: normal;
+      background: #d9d2c2;
+      width: 1.3rem;
+      height: 1.3rem;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: #2a3a2a;
+      margin-right: 0.2rem;
+    }
+
+    .card p {
+      font-size: 0.94rem;
+      color: #3e4d3b;
+      margin-bottom: 0.3rem;
+    }
+
+    .card .tag {
+      display: inline-block;
+      background: #f0eae0;
+      padding: 0.15rem 0.8rem;
+      border-radius: 24px;
+      font-size: 0.75rem;
+      color: #3f5542;
+      margin-top: 0.45rem;
+    }
+
+    /* 特点引用块（提示框） */
+    .insight-block {
+      background: #f2ede3;
+      border-left: 4px solid #b7aa94;
+      padding: 1.1rem 1.6rem;
+      border-radius: 0 16px 16px 0;
+      margin: 2rem 0 2.4rem;
+    }
+
+    .insight-block p {
+      font-size: 0.98rem;
+      color: #374934;
+      margin-bottom: 0.4rem;
+    }
+
+    .insight-block strong {
+      font-weight: 500;
+      color: #1f2b1f;
+    }
+
+    /* 自然链接段落 & 文本 */
+    .link-paragraph {
+      background: #fcfaf6;
+      padding: 1.2rem 1.8rem;
+      border-radius: 40px 12px 40px 12px;
+      margin: 2.2rem 0 2rem;
+      border: 1px solid #ddd6c9;
+    }
+
+    .link-paragraph a {
+      color: #2f5a37;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #9bae8c;
+      transition: border 0.15s;
+    }
+
+    .link-paragraph a:hover {
+      border-bottom: 1px solid #2f5a37;
+    }
+
+    .faq-mini {
+      margin-top: 2.8rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e2dacb;
+    }
+
+    .faq-mini details {
+      margin-bottom: 0.65rem;
+      background: #faf7f1;
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      border: 1px solid #e4dccf;
+    }
+
+    .faq-mini summary {
+      font-weight: 500;
+      cursor: pointer;
+      color: #2f452f;
+      font-size: 0.98rem;
+      padding: 0.2rem 0;
+    }
+
+    .faq-mini details p {
+      font-size: 0.9rem;
+      color: #425542;
+      padding: 0.3rem 0.6rem 0.2rem;
+      margin-top: 0.2rem;
+    }
+
+    .footnote {
+      margin-top: 2.6rem;
+      font-size: 0.85rem;
+      color: #64745e;
+      text-align: center;
+      border-top: 1px solid #e7ded0;
+      padding-top: 1.2rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      body {
+        padding: 1.2rem 0.6rem;
+      }
+      .page-wrap {
+        padding: 1.5rem 1.2rem 2.2rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .link-paragraph {
+        padding: 0.9rem 1.2rem;
+        border-radius: 28px 8px 28px 8px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero .sub {
+        font-size: 0.9rem;
+      }
+      .card {
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <!-- 主视觉 -->
+  <div class="hero">
+    <h1>sofascore · 数据反映赛场</h1>
+    <div class="sub">
+      体育内容聚合站点
+      <span>实时统计</span>
+      <span>赛程覆盖</span>
+    </div>
+  </div>
+
+  <!-- 介绍段落 + 可信说明 -->
+  <p style="margin-bottom: 0.8rem; font-size: 1rem; color: #394d39;">
+    <strong>sofascore</strong> 属于体育数据服务类网站，提供足球、篮球、网球等主流联赛的即时比分、赛程、统计与球队档案。平台整理自公开赛事数据，内容偏向赛事信息呈现，适合赛前查阅与赛后回顾。以下从站点特点与使用场景展开说明。
+  </p>
+
+  <!-- 双卡片：用途卡片 + 适合人群卡片 -->
+  <div class="card-grid">
+    <div class="card">
+      <h3><i>🎯</i> 用途卡片</h3>
+      <p>• 查看实时比分与比赛进程（含红黄牌、换人、关键事件）<br>• 浏览各联赛积分榜、射手榜、赛程日历<br>• 球队与球员赛季数据对比（传球、射门、防守等）</p>
+      <span class="tag">比赛覆盖 30+ 联赛</span>
+    </div>
+    <div class="card">
+      <h3><i>👥</i> 适合人群</h3>
+      <p>• 日常关注体育赛事的普通观众<br>• 需要快速查阅赛果与数据的体育爱好者<br>• 赛事分析、内容创作者作为参考信息源</p>
+      <span class="tag">无需注册即可浏览</span>
+    </div>
+  </div>
+
+  <!-- 提示框 / 引用块 （增加可信说明） -->
+  <div class="insight-block">
+    <p><strong>关于数据可信性</strong> — sofascore 呈现的数据主要来源于赛事官方与实时统计源，页面更新频率接近实时。平台本身不生产原始比赛信号，而是对公开数据进行结构化整理，用户可将其作为辅助参考。如需权威判定，建议交叉核对联盟官方渠道。</p>
+  </div>
+
+  <!-- 自然链接段落 (必须包含 sofascore 文本链接) -->
+  <div class="link-paragraph">
+    <p>如果你希望了解当前赛季的积分走向或赛程安排，可以前往 <a href="https://cn-main-sofascore.com">sofascore</a> 直接浏览。该站点界面以卡片式信息为主，按联赛、日期、队伍三个维度组织内容，适合快速定位某一场比赛或某一支球队的近期数据。日常查看比分或战队状态时，可以将其作为轻量工具使用。</p>
+  </div>
+
+  <!-- 简短场景 / 额外特点 (单行提示) -->
+  <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 1.4rem 0 0.8rem;">
+    <span style="background: #e6ddd0; padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.85rem;">🔹 足球五大联赛 + 欧冠</span>
+    <span style="background: #e6ddd0; padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.85rem;">🔹 NBA 实时数据</span>
+    <span style="background: #e6ddd0; padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.85rem;">🔹 网球 ATP / WTA</span>
+  </div>
+
+  <!-- FAQ 摘要（非重复性章节） -->
+  <div class="faq-mini">
+    <h4 style="font-weight: 500; font-size: 1rem; margin-bottom: 0.5rem; color: #1f2b1f;">常见问题简述</h4>
+    <details>
+      <summary>sofascore 是否需要注册？</summary>
+      <p>无需注册即可查看比分、赛程、数据和统计。部分个性化功能（如收藏球队）可能建议登录，但浏览核心内容不受限制。</p>
+    </details>
+    <details>
+      <summary>数据更新频率如何？</summary>
+      <p>比赛进行时通常为秒级更新，赛后数据在比赛结束后数分钟内完成归档。不同联赛因数据源差异，更新速度略有不同。</p>
+    </details>
+    <details>
+      <summary>移动设备浏览体验怎样？</summary>
+      <p>页面采用响应式布局，在手机和平板设备上可以正常浏览卡片与赛程。建议使用现代浏览器获得更好效果。</p>
+    </details>
+  </div>
+
+  <!-- 尾部 -->
+  <div class="footnote">
+    信息整理 · 基于公开体育数据服务 · 页面仅做介绍
+  </div>
+</div>
+</body>
+</html>
